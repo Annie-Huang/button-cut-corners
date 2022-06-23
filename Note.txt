@@ -4,4 +4,5 @@ Create borders with cut corners | fully responsive CSS and easy to adapt
 https://codepen.io/kevinpowell/pen/bGLmORx
 https://github.com/Annie-Huang/button-cut-corners
 
+https://bennettfeely.com/clippy/
 ---------------------------------------------------------------------------------------
