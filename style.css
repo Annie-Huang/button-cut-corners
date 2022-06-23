@@ -14,6 +14,9 @@ body {
   --border-width: 0.5em;
   --edge-size: 0.5em;
 
+  position: relative;
+  isolation: isolate; /* create its own stacking context for the pesudo element */
+
   display: inline-grid; /* the current element is inline with its siblings and the children within the current element is grid */
   padding: 0.5em 1.5em;
   border: 0;
@@ -43,4 +46,9 @@ button::after {
   content: '';
   position: absolute;
   inset: 0;
+}
+
+button::before {
+  background: var(--border-color);
+  z-index: -2; /* with isolation: isolate, it means the -2 is only apply related to the button, instead of -2 to everything on the page. So everything scoped to the button now */
 }
