@@ -1,0 +1,7 @@
+Create borders with cut corners | fully responsive CSS and easy to adapt
+(https://www.youtube.com/watch?v=aW6qEAQSctY)
+
+https://codepen.io/kevinpowell/pen/bGLmORx
+https://github.com/Annie-Huang/button-cut-corners
+
+---------------------------------------------------------------------------------------
