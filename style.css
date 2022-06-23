@@ -37,3 +37,10 @@ body {
     /* bottom-left */ 0 100%
   );
 }
+
+button::before,
+button::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
