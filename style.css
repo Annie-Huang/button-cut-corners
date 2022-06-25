@@ -11,7 +11,11 @@ body {
 
   --background: #efefef;
   --border-color: linear-gradient(to bottom right, red, blue);
+  /*--border-width: 0.5em;*/
+  /*--border-width: 0.125em;*/
   --border-width: 0.25em;
+  /*--edge-size: 0.15em;*/
+  /*--edge-size: 1em;*/
   --edge-size: 0.5em;
 
   position: relative;
