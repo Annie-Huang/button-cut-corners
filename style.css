@@ -43,6 +43,8 @@ body {
     /* bottom-right 2 */ calc(100% - var(--edge-size)) 100%,
     /* bottom-left */ 0 100%
   );
+
+  transition: color 250ms;
 }
 
 button::before,
@@ -93,6 +95,9 @@ button::after {
   transition: clip-path 500ms;
 }
 
+.button:where(:hover, :focus) {
+  color: white;
+}
 .button:where(:hover, :focus)::after {
   /* Need to '- var(--border-width)' in calc(100% - var(--border-width)) so we don't overlap the right border
      Need to change on top-left 1, top-left 2, bottom-left
