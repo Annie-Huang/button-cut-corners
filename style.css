@@ -11,7 +11,7 @@ body {
 
   --background: #efefef;
   --border-color: linear-gradient(to bottom right, red, blue);
-  --border-width: 0.5em;
+  --border-width: 0.25em;
   --edge-size: 0.5em;
 
   position: relative;
@@ -57,14 +57,32 @@ button::after {
   background: var(--background);
   z-index: -1;
 
+  /*clip-path: polygon(*/
+  /*  !* top-left 1 *! 0.25em var(--edge-size),*/
+  /*  !* top-left 2 *! var(--edge-size) 0.25em,*/
+  /*  !* top-right *! calc(100% - 0.25em) 0.25em,*/
+  /*  !* bottom-right 1 *! calc(100% - 0.25em)*/
+  /*    calc(100% - 0.25em - var(--edge-size)),*/
+  /*  !* bottom-right 2 *! calc(100% - 0.25em - var(--edge-size))*/
+  /*    calc(100% - 0.25em),*/
+  /*  !* bottom-left *! 0.25em calc(100% - 0.25em)*/
+  /*);*/
+
+  /* You can switch the 0.5 value to 0.25, or 0.125. The key is to see which give you around the border width as the top horizontal line
+     Replace with 0.25em from var(--border-width)
+     Replace with calc(100% - 0.25em - var(--edge-size)) with calc(100% - calc(var(--edge-size) + var(--border-width) * 0.5))
+  */
   clip-path: polygon(
-    /* top-left 1 */ 0.25em var(--edge-size),
-    /* top-left 2 */ var(--edge-size) 0.25em,
-    /* top-right */ calc(100% - 0.25em) 0.25em,
-    /* bottom-right 1 */ calc(100% - 0.25em)
-      calc(100% - 0.25em - var(--edge-size)),
-    /* bottom-right 2 */ calc(100% - 0.25em - var(--edge-size))
-      calc(100% - 0.25em),
-    /* bottom-left */ 0.25em calc(100% - 0.25em)
+    /* top-left 1 */ var(--border-width)
+      calc(var(--edge-size) + var(--border-width) * 0.5),
+    /* top-left 2 */ calc(var(--edge-size) + var(--border-width) * 0.5)
+      var(--border-width),
+    /* top-right */ calc(100% - var(--border-width)) var(--border-width),
+    /* bottom-right 1 */ calc(100% - var(--border-width))
+      calc(100% - calc(var(--edge-size) + var(--border-width) * 0.5)),
+    /* bottom-right 2 */
+      calc(100% - calc(var(--edge-size) + var(--border-width) * 0.5))
+      calc(100% - var(--border-width)),
+    /* bottom-left */ var(--border-width) calc(100% - var(--border-width))
   );
 }
