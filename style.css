@@ -9,7 +9,7 @@ body {
   /* for some reason the font-size failed to inherit from the parent. it overwrite by user agent stylesheet */
   font-size: clamp(2rem, 1rem + 5vw, 4rem);
 
-  --background: #333;
+  --background: #efefef;
   --border-color: linear-gradient(to bottom right, red, blue);
   --border-width: 0.5em;
   --edge-size: 0.5em;
@@ -51,4 +51,9 @@ button::after {
 button::before {
   background: var(--border-color);
   z-index: -2; /* with isolation: isolate, it means the -2 is only apply related to the button, instead of -2 to everything on the page. So everything scoped to the button now */
+}
+
+button::after {
+  background: var(--background);
+  z-index: -1;
 }
