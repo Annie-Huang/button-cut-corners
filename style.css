@@ -9,7 +9,7 @@ body {
   /* for some reason the font-size failed to inherit from the parent. it overwrite by user agent stylesheet */
   font-size: clamp(2rem, 1rem + 5vw, 4rem);
 
-  --background: #efefef;
+  --background: #fff;
   --border-color: linear-gradient(to bottom right, red, blue);
   /*--border-width: 0.5em;*/
   /*--border-width: 0.125em;*/
@@ -88,5 +88,30 @@ button::after {
       calc(100% - calc(var(--edge-size) + var(--border-width) * 0.5))
       calc(100% - var(--border-width)),
     /* bottom-left */ var(--border-width) calc(100% - var(--border-width))
+  );
+
+  transition: clip-path 500ms;
+}
+
+.button:where(:hover, :focus)::after {
+  /* Need to '- var(--border-width)' in calc(100% - var(--border-width)) so we don't overlap the right border
+     Need to change on top-left 1, top-left 2, bottom-left
+
+     top-left 1 === bottom-right 1
+     bottom-left === bottom-right 2
+  */
+  clip-path: polygon(
+    /* top-left 1 */ calc(100% - var(--border-width))
+      calc(100% - calc(var(--edge-size) + var(--border-width) * 0.5)),
+    /* top-left 2 */ calc(100% - var(--border-width)) var(--border-width),
+    /* top-right */ calc(100% - var(--border-width)) var(--border-width),
+    /* bottom-right 1 */ calc(100% - var(--border-width))
+      calc(100% - calc(var(--edge-size) + var(--border-width) * 0.5)),
+    /* bottom-right 2 */
+      calc(100% - calc(var(--edge-size) + var(--border-width) * 0.5))
+      calc(100% - var(--border-width)),
+    /* bottom-left */
+      calc(100% - calc(var(--edge-size) + var(--border-width) * 0.5))
+      calc(100% - var(--border-width))
   );
 }
